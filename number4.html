@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <img src="" alt="" id="image_container">
+    <form id="content">
+        <label for="inputan">Ubah :</label>
+        <select name="gambar" id="gambar" onchange="changeImg(this)">
+            <option disabled hidden selected>Pilih Gambar</option>
+            <option value="1">Gambar 1</option>
+            <option value="2">Gambar 2</option>
+            <option value="3">Gambar 3</option>
+        </select>
+        <select name="bentuk" id="bentuk" onchange="changeImg(this)">
+            <option disabled hidden selected>Pilih Bentuk</option>
+            <option value="lingkaran">Lingkaran</option>
+            <option value="kotak">Kotak</option>
+            <option value="segitiga">Segitiga</option>
+        </select>
+        <select name="warna" id="warna" onchange="changeImg(this)">
+            <option disabled hidden selected>Pilih Warna Border</option>
+            <option value="merah">Merah</option>
+            <option value="kuning">Kuning</option>
+            <option value="hijau">Hijau</option>
+        </select>
+        <input type="submit" value="submit">
+    </form>
+    <script>
+        document.getElementById('content').addEventListener("submit", function(event){
+            event.preventDefault();
+            
+            let image = document.getElementById('image_container');
+            let warna = document.getElementById('warna').value;
+            let bentuk = document.getElementById('bentuk').value;
+            let gambar = document.getElementById('gambar').value;
+            
+            if(gambar == "1"){
+                image.src = "https://imgcdn.sigstick.com/Esr4U7UCsnTNPcGeUgL0/cover-1.thumb256.png";
+            } else if(gambar == "2"){
+                image.src = "https://imgcdn.sigstick.com/tK44c3I5jEXR73rCcqHV/cover-1.thumb256.png";
+            } else if(gambar == "3"){
+                image.src = "https://media.tenor.com/t3dLLNaI50oAAAAM/cat-cats.gif";
+            }
+
+            if(bentuk == "lingkaran"){
+                image.style.borderRadius = '50%';
+                image.style.clipPath = "none";
+            } else if(bentuk == "kotak"){
+                image.style.borderRadius = '0';
+                image.style.clipPath = "none";
+            } else if(bentuk == "segitiga"){
+                image.style.clipPath = "polygon(50% 0%, 0% 100%, 100% 100%)";
+                image.style.borderRadius = '0';
+            }
+
+            if(warna == "merah"){
+                image.style.border = "5px red solid";
+            } else if(warna == "kuning"){
+                image.style.border = "5px yellow solid";
+            } else if(warna == "hijau"){
+                image.style.border = "5px green solid";
+            }
+        })
+    </script>
+</body>
+</html>

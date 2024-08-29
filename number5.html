@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            padding: 10px;
+            border: 2px black solid;
+        }
+
+        button {
+            width: 20%;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            background-color: green;
+            color: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h2>Hitung Mundur</h2>
+        <h1 id="seconds">10</h1>
+        <button id="start">Mulai</button>
+        <button id="stop">Berhenti</button>
+    </div>
+    <script>
+        let start = document.getElementById('start');
+        let stop = document.getElementById('stop');
+        let seconds = document.getElementById('seconds');
+        let count = 10;
+        let time;
+
+        function countdown() {
+            count--;
+            seconds.innerHTML = String(count);
+            if (count > 0) {
+                time = setTimeout(countdown, 1000);
+            } else if(count == 0){
+                seconds.innerText = "Waktu Habis";
+                seconds.style.color = "red";
+                document.getElementById('stop').disabled = true;
+            }
+        };
+
+        document.getElementById("start").addEventListener("click", function () {
+            document.getElementById('start').disabled = true;
+            countdown();
+        });
+
+        document.getElementById("stop").addEventListener("click", function () {
+            document.getElementById('start').disabled = false;
+            clearTimeout(time);
+        });
+    </script>
+</body>
+
+</html>

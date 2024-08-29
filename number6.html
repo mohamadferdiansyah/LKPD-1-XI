@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form id="inputan">
+            <input type="date" id="tanggal">
+            <input type="submit">
+        </form>
+        <p id="output" style="font-weight: bold;">Tidak Mencari Data...</p>
+    </div>
+    <script>
+        document.getElementById('inputan').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let output = document.getElementById('output');
+            let tanggal = document.getElementById('tanggal').value;
+
+                const months = [
+                    "januari",
+                    "februari",
+                    "maret",
+                    "april",
+                    "mei",
+                    "juni",
+                    "juli",
+                    "agustus",
+                    "september",
+                    "oktober",
+                    "november",
+                    "desember",
+                ];
+                const day = tanggal.slice(8, 10);
+                const month = months[tanggal.slice(6, 7) - 1];
+                const year = tanggal.slice(0, 4);
+
+                if (tanggal == "") {
+                    output.innerHTML = "MASUKAN TANGGAL DULU";
+                } else {
+                    output.innerHTML = "Mencari Data Tanggal " + `<span style='color: blue;'>${day} ${month} ${year}</span>`;
+                }
+            })
+    </script>
+</body>
+
+</html>
