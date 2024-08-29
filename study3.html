@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>ada perekomendasi?</p>
+    <form>
+        <select name="rekomen" id="rekomen" onchange="changeLabel(this)">
+            <option disabled hidden selected>Pilih</option>
+            <option value="Y">Ada</option>
+            <option value="N">Tidak</option>
+        </select>
+    </form>
+    <div class="wrapper" id="wrapper" style="display: none;">
+        <form>
+            <p>Nama perekomendasi</p>
+            <input type="text">
+            <p>Kategori perekomendasi</p>
+            <select name="kategori" id="kategori" onchange="changeLabel(this)">
+                <option disabled hidden selected>Pilih</option>
+                <option value="A">Pekerja BRI</option>
+                <option value="B">Purnabakti</option>
+            </select>
+            <p>Nomor ID</p>
+            <input type="number">
+            <div class="wrapper-jabatan" id="bri">
+                <p>Jabatan</p>
+                <input type="text">
+            </div>
+        </form>
+    </div>
+    <script>
+        function changeLabel(e){
+            let muncul = document.getElementById('wrapper');
+            let bri =document.getElementById('bri');
+
+            if(e.value == "Y"){
+                muncul.style.display = 'block';
+            } else if (e.value == "N"){
+                muncul.style.display = 'none';
+            } else if (e.value == "A"){
+                muncul.style.display = 'block';
+                bri.style.display = 'block';
+            } else if (e.value == "B"){
+                muncul.style.display = 'block';
+                bri.style.display = 'none';
+            }
+
+        }
+    </script>
+</body>
+
+</html>
